@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button>Back</ion-back-button>
+    </ion-buttons>
+    <ion-title>Historique</ion-title>
+</ion-toolbar>
+</ion-header>
+<ion-content>
+  <div *ngIf="!verif">
+    <p *ngIf="!verif">votre historique est vide</p>
+  </div>
+  <ion-grid *ngIf="verif">
+    <ion-row class="back">
+      <ion-col size="2"> <ion-label > nom du cuistot</ion-label></ion-col>
+      <ion-col size="3"> <ion-label > date du commande</ion-label></ion-col>
+      <ion-col size="3"> <ion-label> nom du plat</ion-label></ion-col>
+      <ion-col size="2"> <ion-label> nbr plat</ion-label></ion-col>
+      <ion-col size="2"> <ion-label> Rate</ion-label></ion-col>
+    </ion-row>
+    <ion-row *ngFor="let cmd of plats" (click)="rating(cmd.foodId,cmd.time)">
+      <ion-col size="2"> <ion-label>{{cmd.cuistotName}}</ion-label></ion-col>
+      <ion-col size="3"> <ion-label> {{cmd.time}}</ion-label></ion-col>
+      <ion-col size="3"> <ion-label> {{cmd.name}}</ion-label></ion-col>
+      <ion-col size="2"> <ion-label> {{cmd.nbr}}</ion-label></ion-col>
+      <ion-col size="2"> <ion-label> {{cmd.rate}}</ion-label></ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">
+    <ion-infinite-scroll-content
+      loadingSpinner="bubbles"
+      loadingText="Loading more data...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+
+</ion-content>

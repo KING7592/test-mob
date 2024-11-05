@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button>Back</ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-icon slot="icon-only" name="cart-outline" *ngIf="!verif" (click)="passerCommande()"></ion-icon>
+        </ion-buttons>
+    <ion-title>listfood</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-card *ngFor="let food of foods" button=true (click)="options(food.idFood)" >
+      <img src={{food.img}} height="400" width="80%"/>
+    <ion-card-header>
+      <ion-card-title>{{food.name}}</ion-card-title>
+      <ion-card-subtitle>plat {{food.type}}</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      Description : {{food.description}}<br> price : {{food.price}}<br>
+      plat restant : {{food.platNumber}} <br> Créer le : {{food.created_At}}
+    </ion-card-content>
+  </ion-card>
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed" *ngIf="verif" (click)='addPlat()'>
+    <ion-fab-button  >
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+  <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">
+    <ion-infinite-scroll-content
+      loadingSpinner="bubbles"
+      loadingText="Loading more data...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>

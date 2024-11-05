@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Show Map</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-fab vertical="bottom" horizontal="start" slot="fixed">
+    <ion-fab-button>
+      <ion-icon name="map-outline"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-list side="top">
+      <ion-fab-button (click)="makeRM()"><ion-label>RM</ion-label></ion-fab-button>
+      <ion-fab-button (click)="makeST()"><ion-label>ST</ion-label></ion-fab-button>
+      <ion-fab-button (click)="makeHB()"><ion-label>HB</ion-label></ion-fab-button>
+      <ion-fab-button (click)="makeTR()"><ion-label>TR</ion-label></ion-fab-button>
+    </ion-fab-list>
+  </ion-fab>
+  <div #map class="map"></div>
+
+</ion-content>

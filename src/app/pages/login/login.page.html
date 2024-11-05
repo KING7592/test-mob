@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Login</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="loginForm" (ngSubmit)="tryLogin()" novalidate>
+  <ion-list>
+    <ion-item>
+      <ion-label position="floating">Email</ion-label>
+      <ion-input type="text" formControlName="email_address"></ion-input>
+    </ion-item>
+    <span class="error-ion-padding" *ngIf=" !isValid && errorCtr.email_address.errors?.required">
+      Required
+    </span>
+    <ion-item>
+      <ion-label position="floating">Password</ion-label>
+      <ion-input type="password" formControlName="password"></ion-input>
+    </ion-item>
+    <span class="error-ion-padding" *ngIf=" !isValid && errorCtr.password.errors?.required">
+      Required
+    </span>
+    <ion-button expand="block" color="primary" class="no-padding" type="submit">Login</ion-button>
+    <p >if you don't have account <span (click)=tryRegister() >sign up</span></p>
+  </ion-list>
+  </form>
+
+</ion-content>

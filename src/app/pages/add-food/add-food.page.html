@@ -1,0 +1,67 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button (click)="cleardata()"></ion-back-button>
+    </ion-buttons>
+    <ion-title *ngIf="!isUpdate">addFood</ion-title>
+    <ion-title *ngIf="isUpdate">Update Food</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+<form [formGroup]="addPlatForm" novalidate>
+  <ion-list id="list">
+    <ion-item>
+      <ion-label position="floating">plat name</ion-label>
+      <ion-input type="text" formControlName="plat_name" ></ion-input>
+    </ion-item>
+    <span class="error-ion-padding" *ngIf=" !isValid && errorCtr.plat_name.errors?.required">
+      Required
+    </span>
+    <ion-item>
+      <ion-label position="floating">Description</ion-label>
+      <ion-textarea formControlName="description" position="stacked"></ion-textarea>
+    </ion-item>
+    <span class="error-ion-padding" *ngIf=" !isValid && errorCtr.description.errors?.required">
+      Required
+    </span>
+    <ion-item>
+      <ion-label position="floating">Price</ion-label>
+      <ion-input type="number" formControlName="price"></ion-input>
+    </ion-item>
+    <span class="error-ion-padding" *ngIf=" !isValid && errorCtr.price.errors?.required">
+      Required
+    </span>
+    <ion-item>
+      <ion-label position="floating">Plat Number</ion-label>
+      <ion-input type="number" formControlName="plat_number"></ion-input>
+    </ion-item>
+    <span class="error-ion-padding" *ngIf=" !isValid && errorCtr.plat_number.errors?.required">
+      Required
+    </span>
+    <ion-item>
+      <ion-label style="color:#999" position="floating">Type</ion-label>
+      <ion-select  interface="popover" formControlName="type">
+        <ion-select-option value="tunisie">Tunisie</ion-select-option>
+        <ion-select-option value="france">France</ion-select-option>
+        <ion-select-option value="chine">Chine</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <span class="error-ion-padding" *ngIf=" !isValid && errorCtr.type.errors?.required">
+      Required
+    </span>
+  </ion-list>
+  <div id="full">
+    <div id="part1">
+      <img src={{img}}/>
+    </div>
+    <div id="part2">
+      <ion-button (click)="getCamera()">Camera</ion-button>
+      <ion-button (click)="getGallery()">Galerie</ion-button>
+    </div>
+    <div id="part3">
+      <ion-button expand="block" color="primary" class="no-padding" (click)="addPlat()" *ngIf="!isUpdate">ADD</ion-button>
+      <ion-button expand="block" color="primary" class="no-padding" (click)="updatePlat()" *ngIf="isUpdate">Update</ion-button>
+    </div>
+  </div>
+</form>
+</ion-content>

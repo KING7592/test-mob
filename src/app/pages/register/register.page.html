@@ -1,0 +1,85 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>register</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="registerForm" (ngSubmit)="register()" novalidate>
+  <ion-list>
+    <ion-item>
+      <ion-label position="floating">your name</ion-label>
+      <ion-input type="text" formControlName="your_name"></ion-input>
+    </ion-item>
+    <span class="error-ion-padding" *ngIf=" !isValid && errorCtr.your_name.errors?.required">
+      Required
+    </span>
+    <ion-item>
+      <ion-label position="floating">Email</ion-label>
+      <ion-input type="text" formControlName="email_address"></ion-input>
+    </ion-item>
+    <span class="error-ion-padding" *ngIf=" !isValid && errorCtr.email_address.errors?.required">
+      Required
+    </span>
+    <span class="error-ion-padding" *ngIf=" !isValid && errorCtr.email_address.errors?.pattern">
+      Enter valid email please ( xxxxx@xxx.xxx)
+    </span>
+    <ion-item>
+      <ion-label style="color:#999" position="floating">Gender</ion-label>
+      <ion-select  interface="popover" formControlName="gender">
+        <ion-select-option value="female">Female</ion-select-option>
+        <ion-select-option value="male">Male</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <span class="error-ion-padding" *ngIf=" !isValid && errorCtr.gender.errors?.required">
+      Required
+    </span>
+    <ion-item>
+      <ion-label style="color:#999" position="floating">Date of birth</ion-label>
+      <ion-datetime displayFormat="YYYY-MM-DD" formControlName="date_birth"></ion-datetime>
+    </ion-item>
+    <span class="error-ion-padding" *ngIf=" !isValid && errorCtr.date_birth.errors?.required">
+      Required
+    </span>
+    <ion-item>
+      <ion-label style="color:#999" position="floating">country</ion-label>
+      <ion-select  interface="popover" formControlName="country">
+        <ion-select-option value="tunis">Tunis </ion-select-option>
+        <ion-select-option value="sfax">Sfax</ion-select-option>
+        <ion-select-option value="kairouan">Kairouan</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <span class="error-ion-padding" *ngIf=" !isValid && errorCtr.country.errors?.required">
+      Required
+    </span>
+    <ion-item>
+      <ion-label position="floating">Enter your address here...</ion-label>
+      <ion-textarea formControlName="address" position="stacked"></ion-textarea>
+    </ion-item>
+    <span class="error-ion-padding" *ngIf=" !isValid && errorCtr.address.errors?.required">
+      Required
+    </span>
+    <ion-item>
+      <ion-label position="floating">password</ion-label>
+      <ion-input type="password" formControlName="password"></ion-input>
+    </ion-item>
+    <span class="error-ion-padding" *ngIf=" !isValid && errorCtr.password.errors?.required">
+      Required
+    </span>
+    <ion-item>
+      <ion-label position="floating">Confirmation</ion-label>
+      <ion-input type="password" formControlName="conf_pass"></ion-input>
+    </ion-item>
+    <span class="error-ion-padding" *ngIf=" !isValid && errorCtr.conf_pass.errors?.required">
+      Required
+    </span>
+    <span class="error-ion-padding" *ngIf=" !isValid && !verif">
+      password not identical
+    </span>
+    <ion-button expand="block" color="primary" class="no-padding" type="submit" >Register</ion-button>
+  </ion-list>
+</form>
+</ion-content>

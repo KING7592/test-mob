@@ -1,0 +1,102 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>livraisons</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <h2>les livraisons d'aujourd'hui</h2>
+  <div *ngFor="let cmd of livraisonsToday">
+    <ion-grid>
+      <ion-row class="back">
+        <ion-col > <ion-label> nom du client</ion-label></ion-col>
+        <ion-col > <ion-label> date du commande</ion-label></ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col > <ion-label> {{cmd.client}}</ion-label></ion-col>
+        <ion-col > <ion-label> {{cmd.time}}</ion-label></ion-col>
+      </ion-row>
+      <ion-row class="back">
+        <ion-col > <ion-label> nom du plat</ion-label></ion-col>
+        <ion-col > <ion-label> nbr plat</ion-label></ion-col>
+        <ion-col > <ion-label> Rate</ion-label></ion-col>
+      </ion-row>
+        <ion-row *ngFor="let plt of cmd.plat">
+        <ion-col > <ion-label> {{plt.name}}</ion-label></ion-col>
+        <ion-col > <ion-label> {{plt.nbr}}</ion-label></ion-col>
+        <ion-col > <ion-label> {{plt.rate}}</ion-label></ion-col>
+        </ion-row>
+        <ion-row class="back">
+          <ion-col > <ion-label> notes</ion-label></ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col > <ion-label> {{cmd.note}}</ion-label></ion-col>
+        </ion-row>
+        <ion-row class="back">
+          <ion-col > <ion-label> Adresse du client</ion-label></ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col > <ion-label> {{cmd.clientaddress}}</ion-label></ion-col>
+          <ion-col > <ion-button (click)="showMap(cmd.clientaddress)"> show on map</ion-button></ion-col>
+        </ion-row>
+      </ion-grid>
+  </div>
+  <h2>les anciens livraisons</h2>
+  <div *ngFor="let cmd of livraisonsold">
+    <ion-grid>
+      <ion-row class="back">
+        <ion-col > <ion-label> nom du client</ion-label></ion-col>
+        <ion-col > <ion-label> date du commande</ion-label></ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col > <ion-label> {{cmd.client}}</ion-label></ion-col>
+        <ion-col > <ion-label> {{cmd.time}}</ion-label></ion-col>
+      </ion-row>
+      <ion-row class="back">
+        <ion-col > <ion-label> nom du plat</ion-label></ion-col>
+        <ion-col > <ion-label> nbr plat</ion-label></ion-col>
+        <ion-col > <ion-label> Rate</ion-label></ion-col>
+      </ion-row>
+        <ion-row *ngFor="let plt of cmd.plat">
+        <ion-col > <ion-label> {{plt.name}}</ion-label></ion-col>
+        <ion-col > <ion-label> {{plt.nbr}}</ion-label></ion-col>
+        <ion-col > <ion-label> {{plt.rate}}</ion-label></ion-col>
+        </ion-row>
+        <ion-row class="back">
+          <ion-col > <ion-label> notes</ion-label></ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col > <ion-label> {{cmd.note}}</ion-label></ion-col>
+        </ion-row>
+        <ion-row class="back">
+          <ion-col > <ion-label> Adresse du client</ion-label></ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col > <ion-label> {{cmd.clientaddress}}</ion-label></ion-col>
+          <ion-col > <ion-button (click)="showMap(cmd.clientaddress)"> show on map</ion-button></ion-col>
+        </ion-row>
+
+      </ion-grid>
+  </div>
+  <!--
+  <ion-grid>
+    <ion-row class="back">
+      <ion-col size="2"> <ion-label > nom du client</ion-label></ion-col>
+      <ion-col size="3"> <ion-label > date du commande</ion-label></ion-col>
+      <ion-col size="3"> <ion-label> nom du plat</ion-label></ion-col>
+      <ion-col size="2"> <ion-label> nbr plat</ion-label></ion-col>
+      <ion-col size="2"> <ion-label> Rate</ion-label></ion-col>
+    </ion-row>
+  <ion-row *ngFor="let cmd of livraison">
+    <ion-col size="2"> <ion-label>{{cmd.client}}</ion-label></ion-col>
+    <ion-col size="3"> <ion-label> {{cmd.time}}</ion-label></ion-col>
+    <ion-col size="3"> <ion-label> {{cmd.name}}</ion-label></ion-col>
+    <ion-col size="2"> <ion-label> {{cmd.nbr}}</ion-label></ion-col>
+    <ion-col size="2"> <ion-label> {{cmd.rate}}</ion-label></ion-col>
+    </ion-row>
+  </ion-grid>
+-->
+</ion-content>
